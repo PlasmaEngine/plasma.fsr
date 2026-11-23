@@ -1,6 +1,7 @@
 // #pl-version 1
 //
-// The FidelityFX API (FSR upscaler) this package builds against and ships. ThirdParty/FidelityFX-SDK is a git submodule
+// The FidelityFX API (FSR upscaler, frame generation, Ray Regeneration denoiser, Anti-Lag 2) this package builds
+// against and ships. ThirdParty/FidelityFX-SDK is a git submodule
 // of AMD's SDK repository, pinned to a release; its signed binaries are copied next to the plugin, which loads them at
 // run time.
 
@@ -17,6 +18,8 @@ public static class PlasmaPackageFidelityFX
         "amd_fidelityfx_upscaler_dx12.dll",
         "amd_fidelityfx_loader_vk.dll",
         "amd_fidelityfx_upscaler_vk.dll",
+        "amd_fidelityfx_framegeneration_dx12.dll",
+        "amd_fidelityfx_denoiser_dx12.dll",
     };
 
     public static void ConfigureConsumer(ModuleRules rules, BuildContext context)
@@ -35,6 +38,11 @@ public static class PlasmaPackageFidelityFX
         // The SDK's own layout: its headers include each other by relative path.
         rules.PublicIncludePaths.Add(Path.Combine(sdkRoot, "api", "include"));
         rules.PublicIncludePaths.Add(Path.Combine(sdkRoot, "upscalers", "include"));
+        rules.PublicIncludePaths.Add(Path.Combine(sdkRoot, "framegeneration", "include"));
+        rules.PublicIncludePaths.Add(Path.Combine(sdkRoot, "denoisers", "include"));
+
+        // Anti-Lag 2 is a header-only interface to the Radeon driver.
+        rules.PrivateIncludePaths.Add(Path.Combine(sdkRoot, "framegeneration", "fsr3", "dx12", "antilag2"));
 
         // The Vulkan types of ffx_api_vk.h come from the engine's Vulkan headers.
         rules.PrivateIncludePaths.Add(Path.Combine(PlasmaPackageSdk.Root, "Code", "ThirdParty", "Vulkan-Headers", "include"));

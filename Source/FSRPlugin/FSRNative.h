@@ -19,3 +19,6 @@ void plFSRMakeBackendDescVK(plFSRBackendDesc& out_desc, const plGALNativeDevice&
 
 FfxApiResource plFSRGetResourceDX12(const plGALNativeTexture& texture, uint32_t uiState);
 FfxApiResource plFSRGetResourceVK(const plGALNativeTexture& texture, uint32_t uiState);
+
+/// The typed DXGI_FORMAT a shader reads a texture of the given (possibly typeless or depth) DXGI_FORMAT as.
+plUInt32 plFSRGetShaderReadFormatDX12(plUInt32 uiFormat);

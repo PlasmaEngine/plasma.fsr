@@ -9,11 +9,11 @@ PluginInfo
 	string %MaxEngineVersion{""}
 	string %Icon{"FSRIcon.png"}
 	string %Banner{"FSRBanner.png"}
-	string %Description{"AMD FidelityFX Super Resolution as a temporal upscaler (Rendering.Upscaler = FSR) on D3D12 and Vulkan."}
+	string %Description{"AMD FidelityFX Super Resolution as a temporal upscaler (Rendering.Upscaler = FSR) on D3D12 and Vulkan. On D3D12 also AMD FSR Frame Generation (Rendering.FrameGeneration = FSR), AMD FSR Ray Regeneration (ray reconstruction with the FSR upscaler) and AMD Anti-Lag 2 (Rendering.LowLatency.Backend = AntiLag2)."}
 	string %EditorPlugins{}
 	string %EditorEnginePlugins{}
 	string %RuntimePlugins{"plFSRPlugin"}
-	string %PackageDependencies{"amd_fidelityfx_loader_dx12", "amd_fidelityfx_upscaler_dx12", "amd_fidelityfx_loader_vk", "amd_fidelityfx_upscaler_vk"}
+	string %PackageDependencies{"amd_fidelityfx_loader_dx12", "amd_fidelityfx_upscaler_dx12", "amd_fidelityfx_framegeneration_dx12", "amd_fidelityfx_denoiser_dx12", "amd_fidelityfx_loader_vk", "amd_fidelityfx_upscaler_vk"}
 	string %RequiredPlugins{}
 	string %ExclusiveFeatures{}
 	string %EnabledInTemplates{}
